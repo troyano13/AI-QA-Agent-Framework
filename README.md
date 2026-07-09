@@ -362,7 +362,7 @@ features/
 
 ---
 
-## Recomendaciones adicionales, aqui se sube todo el proyecto porque es un ejemplo
+## Recomendaciones adicionales, tener n cuenta que aqui se sube todo el proyecto porque es un ejemplo
 
 
 * Añadir una licencia (`LICENSE`, por ejemplo MIT).
