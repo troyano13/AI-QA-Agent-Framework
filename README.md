@@ -24,110 +24,153 @@ El objetivo es transformar una historia de usuario en un conjunto completo de ar
 
 ### Arquitectura
 
+```text
+                           +----------------------+
+                           |   User Story (.txt)  |
+                           |  stories/login.txt   |
+                           +----------+-----------+
+                                      |
+                                      |
+                                      ▼
+                    +----------------------------------+
+                    | Agent 1 - Test Case Generator    |
+                    |----------------------------------|
+                    | • Analyze User Story             |
+                    | • Generate ISTQB Test Cases      |
+                    +----------------+-----------------+
+                                     |
+                                     ▼
+                       output/test_cases.md
+                                     |
+                                     |
+                                     ▼
+                  +--------------------------------------+
+                  | Agent 2 - Gherkin Generator          |
+                  |--------------------------------------|
+                  | • Read User Story                    |
+                  | • Generate BDD Scenarios             |
+                  +----------------+---------------------+
+                                   |
+                                   ▼
+                      features/login.feature
+                                   |
+                                   |
+                                   ▼
+             +------------------------------------------+
+             | Agent 3 - Playwright UI Generator        |
+             |------------------------------------------|
+             | • Read Feature File                      |
+             | • Generate UI Automation                 |
+             +----------------+-------------------------+
+                              |
+                              ▼
+                     tests/login.spec.ts
+                              |
+                              |
+                              ▼
+          +----------------------------------------------+
+          | Agent 4 - API Test Generator                 |
+          |----------------------------------------------|
+          | • Read Swagger/OpenAPI Specification         |
+          | • Generate Playwright API Tests             |
+          +----------------+-----------------------------+
+                           |
+                           ▼
+                 api_tests/api.spec.ts
+                           |
+                           |
+                           ▼
+      +---------------------------------------------------------+
+      | Agent 5 - QA Reviewer                                  |
+      |---------------------------------------------------------|
+      | • Analyze all generated artifacts                      |
+      | • Evaluate test coverage                               |
+      | • Detect missing scenarios                             |
+      | • Identify functional risks                            |
+      | • Recommend improvements                               |
+      +----------------+----------------------------------------+
+                       |
+                       ▼
+               reviews/final_review.md
+```
+
+---
+
+## Workflow
+
+```text
 User Story
-
-stories/login.txt
-
-### -Agent 1
-
-### Test Case Generator
-
-Genera casos de prueba ISTQB
-
-Salida
-
-output/test_cases.md
-
-Markdown
-
-
-### -Agent 2
-
-### Gherkin Generator
-
-Convierte historias a Gherkin
-
-Salida
-
-features/login.feature
-
-.feature
-
-
-### -Agent 3
-
-### Playwright UI Generator
-
-Genera automatización UI
-
-Salida
-
-tests/login.spec.ts
-
-TypeScript
-
-
-### -Agent 4
-
-### API Test Generator
-
-Genera pruebas API desde Swagger
-
-Salida
-
-api_tests/api.spec.ts
-
-Playwright API
-
-
-### -Agent 5
-
-### QA Reviewer Agent
-
-Analiza todos los artefactos generados
-
-Cobertura
-
-Riesgos
-
-Mejoras
-
-Score QA
-
-Salida
-
-reviews/final_review.md
-
-Reporte
+      │
+      ▼
+Test Case Generator
+      │
+      ▼
+Gherkin Generator
+      │
+      ▼
+Playwright UI Generator
+      │
+      ▼
+API Test Generator
+      │
+      ▼
+QA Reviewer
+      │
+      ▼
+Final
+```
 
 
 
 ### Estructura del proyecto
 
-```bash
-
+```text
 qa-agent/
+│
 ├── stories/
 │   └── login.txt
+│
 ├── output/
 │   └── test_cases.md
+│
 ├── features/
 │   └── login.feature
+│
 ├── tests/
 │   └── login.spec.ts
+│
 ├── api_specs/
 │   └── swagger.json
+│
 ├── api_tests/
 │   └── api.spec.ts
+│
 ├── reviews/
 │   └── final_review.md
+│
 ├── app.py
 ├── gherkin_agent.py
 ├── playwright_agent.py
 ├── api_test_agent.py
-└── review_agent.py
+├── review_agent.py
+│
+├── .env
+├── requirements.txt
+└── README.md
 
 ```
+
+## AI Agents Responsibilities
+
+| Agent | Responsibility | Input | Output |
+|--------|---------------|--------|--------|
+| **Agent 1** | Test Case Generator | User Story | ISTQB Test Cases |
+| **Agent 2** | Gherkin Generator | User Story | `.feature` File |
+| **Agent 3** | Playwright Generator | Gherkin | UI Automation |
+| **Agent 4** | API Generator | Swagger/OpenAPI | API Automation |
+| **Agent 5** | QA Reviewer | All Generated Artifacts | QA Review Report |
+
+
 
 ### Tecnologías utilizadas
 
