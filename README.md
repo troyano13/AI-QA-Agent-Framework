@@ -28,7 +28,7 @@ User Story
 
 stories/login.txt
 
-Agent 1
+### -Agent 1
 
 ### Test Case Generator
 
@@ -40,7 +40,8 @@ output/test_cases.md
 
 Markdown
 
-Agent 2
+
+### -Agent 2
 
 ### Gherkin Generator
 
@@ -52,7 +53,8 @@ features/login.feature
 
 .feature
 
-Agent 3
+
+### -Agent 3
 
 ### Playwright UI Generator
 
@@ -64,7 +66,8 @@ tests/login.spec.ts
 
 TypeScript
 
-Agent 4
+
+### -Agent 4
 
 ### API Test Generator
 
@@ -76,7 +79,8 @@ api_tests/api.spec.ts
 
 Playwright API
 
-Agent 5
+
+### -Agent 5
 
 ### QA Reviewer Agent
 
@@ -96,7 +100,11 @@ reviews/final_review.md
 
 Reporte
 
+
+
 ### Estructura del proyecto
+
+```bash
 
 qa-agent/
 ├── stories/
@@ -119,6 +127,7 @@ qa-agent/
 ├── api_test_agent.py
 └── review_agent.py
 
+```
 
 ### Tecnologías utilizadas
 
