@@ -142,13 +142,235 @@ qa-agent/
 
 ### Instalación
 
-Comandos
 
-Copiar
+---
 
-Configurar el archivo .env
+# 
 
-### Cómo ejecutar
+## 1. Clonar el repositorio
+
+```bash
+git clone https://github.com/TU-USUARIO/qa-agent.git
+```
+
+```bash
+cd qa-agent
+```
+
+---
+
+## 2. Crear un entorno virtual
+
+Linux / macOS
+
+```bash
+python3 -m venv venv
+```
+
+Windows
+
+```bash
+python -m venv venv
+```
+
+---
+
+## 3. Activar el entorno virtual
+
+Linux
+
+```bash
+source venv/bin/activate
+```
+
+Windows
+
+```bash
+venv\Scripts\activate
+```
+
+---
+
+## 4. Instalar dependencias
+
+```bash
+pip install openai python-dotenv
+```
+
+Opcionalmente,  `requirements.txt`:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## 5. Configurar el archivo `.env`
+
+Crear un archivo llamado:
+
+```text
+.env
+```
+
+con el siguiente contenido:
+
+```env
+OPENAI_API_KEY=sk-proj-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
+
+> **el archivo `.env` a GitHub. Agrégalo al archivo `.gitignore`.**
+
+---
+
+
+# Ejecución
+
+## Agente 1 - Test Case Generator
+
+```bash
+python app.py
+```
+
+Salida:
+
+```text
+output/test_cases.md
+```
+
+---
+
+## Agente 2 - Gherkin Generator
+
+```bash
+python gherkin_agent.py
+```
+
+Salida:
+
+```text
+features/login.feature
+```
+
+---
+
+## Agente 3 - Playwright Generator
+
+```bash
+python playwright_agent.py
+```
+
+Salida:
+
+```text
+tests/login.spec.ts
+```
+
+---
+
+## Agente 4 - API Test Generator
+
+```bash
+python api_test_agent.py
+```
+
+Salida:
+
+```text
+api_tests/api.spec.ts
+```
+
+---
+
+## Agente 5 - QA Reviewer
+
+```bash
+python review_agent.py
+```
+
+Salida:
+
+```text
+reviews/final_review.md
+```
+
+---
+
+#  Dependencias
+
+Actualmente el proyecto utiliza las siguientes librerías:
+
+| Librería      | Propósito                                                        |
+| ------------- | ---------------------------------------------------------------- |
+| openai        | Comunicación con los modelos de OpenAI                           |
+| python-dotenv | Lectura segura de variables desde `.env`                         |
+| os            | Manejo de archivos y directorios (biblioteca estándar de Python) |
+
+---
+
+#  Archivo `requirements.txt`
+
+En lugar de decirle a los usuarios que instalen los paquetes uno por uno, es mejor crear un archivo `requirements.txt`.
+
+Dentro coloca:
+
+```text
+openai>=1.100.0
+python-dotenv>=1.1.0
+```
+
+Luego cualquier persona podrá instalar todo con un solo comando:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+#  Archivo `.gitignore`
+
+
+Contenido recomendado:
+
+```gitignore
+# Virtual environment
+venv/
+
+# Environment variables
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+
+# macOS
+.DS_Store
+
+# VSCode
+.vscode/
+
+# JetBrains
+.idea/
+
+# Generated files
+output/
+reviews/
+tests/
+api_tests/
+features/
+```
+
+---
+
+## Recomendaciones adicionales, aqui se sube todo el proyecto porque es un ejemplo
+
+
+* Añadir una licencia (`LICENSE`, por ejemplo MIT).
+* Mejorar la estructura moviendo los agentes a una carpeta `agents/` en lugar de dejarlos en la raíz.
+* Incluir un diagrama de arquitectura en el README.
+
+
+### Cómo ejecutar los agentes
 
 | Agente                  | Comando                    |
 | ----------------------- | -------------------------- |
