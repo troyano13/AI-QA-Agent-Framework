@@ -1,0 +1,11 @@
+Como usuario
+
+Quiero iniciar sesión
+
+Para acceder a mi cuenta
+
+Criterios de aceptación:
+
+- Login exitoso
+- Password inválido
+- Usuario bloqueado
